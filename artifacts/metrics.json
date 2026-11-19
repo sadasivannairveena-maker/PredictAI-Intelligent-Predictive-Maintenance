@@ -1,0 +1,22 @@
+{
+    "model": "RandomForestClassifier",
+    "dataset": "UCI AI4I 2020",
+    "dataset_type": "synthetic",
+    "threshold": 0.3,
+    "accuracy": 0.9725,
+    "precision": 0.5747126436781609,
+    "recall": 0.7352941176470589,
+    "f1_score": 0.6451612903225806,
+    "roc_auc": 0.9542229935452442,
+    "pr_auc": 0.7048812303790037,
+    "confusion_matrix": [
+        [
+            1895,
+            37
+        ],
+        [
+            18,
+            50
+        ]
+    ]
+}
