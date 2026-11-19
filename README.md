@@ -2,13 +2,13 @@
 
 **End-to-end machine learning for industrial equipment failure-risk classification.**
 
-[**🚀 Launch the live PredictAI V2 demo**](https://predictai-intelligent-predictive-maintenance-klw3qpbyhhvgppp4k.streamlit.app/) · [**Explore the source code**](https://github.com/sadasivannairveena-maker/predictai-intelligent-predictive-maintenance)
+[** Launch the live PredictAI V2 demo**](https://predictai-intelligent-predictive-maintenance-klw3qpbyhhvgppp4k.streamlit.app/) · [**Explore the source code**](https://github.com/sadasivannairveena-maker/predictai-intelligent-predictive-maintenance)
 
 PredictAI is a portfolio project that estimates machine-failure risk from operating measurements, explains individual model predictions with SHAP, and presents evaluation results in an interactive Streamlit dashboard. It uses the **UCI AI4I 2020 Predictive Maintenance dataset**, which contains **10,000 synthetic observations**.
 
 > **Scope:** Educational proof of concept on synthetic, tabular data. This is **not** a production maintenance system, and its model scores are not calibrated real-world failure probabilities.
 
-## ✨ Features
+## Features
 
 - **Interactive prediction:** Adjust machine type, air/process temperatures, rotational speed, torque, and tool wear.
 - **Gradient Boosting model:** Predict a failure-risk score and classify records using a validation-selected **0.25 threshold**.
@@ -16,7 +16,7 @@ PredictAI is a portfolio project that estimates machine-failure risk from operat
 - **Model evaluation:** Inspect precision, recall, F1, ROC-AUC, PR-AUC, and a confusion matrix.
 - **Reproducible training workflow:** Compare three models with stratified 5-fold cross-validation, select a candidate using PR-AUC, tune its decision threshold, and save the results.
 
-## 🧭 System architecture
+## System architecture
 
 ```mermaid
 flowchart TD
@@ -38,7 +38,7 @@ flowchart TD
 
 The preprocessing step is included in each scikit-learn pipeline, so it is fitted only on the relevant training fold during cross-validation. The five failure-mode indicator columns (`TWF`, `HDF`, `PWF`, `OSF`, `RNF`) are **excluded** from predictors to avoid target leakage.
 
-## 📊 Results
+## Results
 
 ### Model comparison (5-fold stratified cross-validation)
 
@@ -75,11 +75,11 @@ Confusion matrix (rows = actual, columns = predicted):
 
 **Evaluation caveat:** The 2,000-record holdout was inspected repeatedly while developing this project; these results are **exploratory**, not a fully independent performance estimate. The project does not claim generalization to real industrial equipment. A future evaluation should use new independently held-out data or nested cross-validation.
 
-## 🧰 Tech stack
+## Tech stack
 
 **Python · pandas · NumPy · scikit-learn · SHAP · Streamlit · Plotly · Matplotlib · joblib · UCI ML Repository**
 
-## 🗂️ Repository layout
+## Repository layout
 
 ```text
 .
@@ -101,7 +101,7 @@ Confusion matrix (rows = actual, columns = predicted):
 └── README.md
 ```
 
-## ▶️ Run locally
+## Run locally
 
 Clone the repository:
 
@@ -142,13 +142,13 @@ This downloads dataset ID **601** from the UCI repository and writes separately 
 
 The training run reported **Python 3.13.18** and **scikit-learn 1.6.1**. The deployed dashboard uses a separately configured **Python 3.11** environment. Serialized scikit-learn models may be incompatible across environments; use the supplied dependency specifications and verify model loading rather than assuming all Python versions are interchangeable.
 
-## 🔎 Explainability
+## Explainability
 
 The SHAP waterfall chart shows **local contributions to the model output** for the currently selected sensor values. Red contributions increase the modeled failure score; blue contributions decrease it. A reconstruction check is performed before displaying the explanation.
 
 **SHAP does not establish causation.** Its contributions describe the learned model, not which component physically caused a machine to fail.
 
-## ⚠️ Limitations and next steps
+## Limitations and next steps
 
 - The source dataset is **synthetic**, not live data from an industrial plant.
 - Observations are treated as independent classification records; there is no streaming ingestion or temporal sequence modeling.
@@ -157,7 +157,7 @@ The SHAP waterfall chart shows **local contributions to the model output** for t
 - The previously inspected holdout cannot support a fresh, unbiased final estimate.
 - Future work: nested cross-validation or external validation, calibration, drift monitoring, and automated tests/CI.
 
-## 📚 Dataset
+## Dataset
 
 UCI Machine Learning Repository: [AI4I 2020 Predictive Maintenance Dataset (ID 601)](https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset).
 
